@@ -149,7 +149,15 @@
                         "alphafold_params_2021-07-14"
                     ],
                     "fa_icon": "fas fa-database"
-                }
+                },
+                "alphafold2_gcds": {
+                    "type": "integer",
+                    "default": 2,
+                    "minimum": 1,
+                    "maximum": 8,
+                    "description": "Number of GCDs (Graphics Compute Dies) to request for AlphaFold2 jobs on Setonix.",
+                    "help_text": "Each Setonix MI250X node has 8 GCDs that largely function as indenpendent GPUs. SLURM allocates number of GCDs via --gres=gpu:N. Each GCD comes with 8 CPUs automatically."
+                }               
             }
         },
         "colabfold_options": {
@@ -208,7 +216,15 @@
                     "type": "boolean",
                     "description": "Create databases indexes when running colabfold_local mode",
                     "fa_icon": "fas fa-bezier-curve"
-                }
+                },
+                "colabfold_gcds": {
+                    "type": "integer",
+                    "default": 1,
+                    "minimum": 1,
+                    "maximum": 8,
+                    "description": "Number of GCDs (Graphics Compute Dies) to request for AlphaFold2 jobs on Setonix.",
+                    "help_text": "Each Setonix MI250X node has 8 GCDs that largely function as indenpendent GPUs. SLURM allocates number of GCDs via --gres=gpu:N. Each GCD comes with 8 CPUs automatically."
+                }        
             }
         },
         "esmfold_options": {
@@ -232,7 +248,15 @@
                     "enum": ["monomer", "multimer"],
                     "fa_icon": "fas fa-stream",
                     "default": "monomer"
-                }
+                },
+                "esmfold_gcds": {
+                    "type": "integer",
+                    "default": 1,
+                    "minimum": 1,
+                    "maximum": 8,
+                    "description": "Number of GCDs (Graphics Compute Dies) to request for AlphaFold2 jobs on Setonix.",
+                    "help_text": "Each Setonix MI250X node has 8 GCDs that largely function as indenpendent GPUs. SLURM allocates number of GCDs via --gres=gpu:N. Each GCD comes with 8 CPUs automatically."
+                }      
             }
         },
         "rosettafold2na_options": {
@@ -268,7 +292,15 @@
                 "boltz_model": {
                     "type": "string",
                     "description": "Sets the model to use for prediction. Default is boltz2"
-                }
+                },
+                "boltz_gcds": {
+                    "type": "integer",
+                    "default": 1,
+                    "minimum": 1,
+                    "maximum": 8,
+                    "description": "Number of GCDs (Graphics Compute Dies) to request for AlphaFold2 jobs on Setonix.",
+                    "help_text": "Each Setonix MI250X node has 8 GCDs that largely function as indenpendent GPUs. SLURM allocates number of GCDs via --gres=gpu:N. Each GCD comes with 8 CPUs automatically."
+                }      
             }
         },
         "foldseek_options": {
