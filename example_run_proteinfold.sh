@@ -9,6 +9,8 @@
 module load singularity/3.11.4-nompi 
 source  /software/projects/pawsey0001/sbeecroft/miniforge3/bin/activate base
 
+export NXF_SINGULARITY_CACHEDIR=$MYSCRATCH/nf_singularity_cache
+
 nextflow run main.nf \
     --input samplesheet.csv \
     --outdir outdir \
