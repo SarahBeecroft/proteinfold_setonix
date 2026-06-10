@@ -5,6 +5,7 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=8GB
+#SBATCH --account=pawsey0012
 
 module load singularity/3.11.4-nompi 
 source  /software/projects/pawsey0001/sbeecroft/miniforge3/bin/activate base
@@ -16,5 +17,6 @@ nextflow run main.nf \
     --outdir outdir \
     -config conf/pawsey_setonix.conf \
     -config conf/amd_containers.conf \
-    --mode alphafold2 \
+    --mode boltz,colabfold,esmfold,alphafold2 \
+    -params-file params.yaml \
     -resume
