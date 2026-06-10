@@ -40,10 +40,10 @@ process COLABFOLD_BATCH {
         ln -s \$(realpath params/alphafold_params_*/*) params/
     fi
 
-    touch params/download_finished.txt
-    touch params/download_complexes_multimer_v3_finished.txt
-    touch params/download_complexes_multimer_v2_finished.txt
-    touch params/download_complexes_multimer_v1_finished.txt
+    ## touch params/download_finished.txt
+    ## touch params/download_complexes_multimer_v3_finished.txt
+    ## touch params/download_complexes_multimer_v2_finished.txt
+    ## touch params/download_complexes_multimer_v1_finished.txt
 
     colabfold_batch \\
         $args \\
