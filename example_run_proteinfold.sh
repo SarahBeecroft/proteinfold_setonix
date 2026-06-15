@@ -1,6 +1,6 @@
 #!/bin/bash -l 
 #SBATCH --job-name=proteinfold
-#SBATCH --time=5:00:00
+#SBATCH --time=24:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=2
@@ -8,6 +8,9 @@
 #SBATCH --account=pawsey0012
 
 module load singularity/3.11.4-nompi 
+
+# This workflow seems to only work with Nextflow version 25.10.4, which I installed in my base conda env. 
+# If you choose to also install with conda, you'll need to update the example path below with your conda info
 source  /software/projects/pawsey0001/sbeecroft/miniforge3/bin/activate base
 
 export NXF_SINGULARITY_CACHEDIR=$MYSCRATCH/nf_singularity_cache
