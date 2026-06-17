@@ -15,6 +15,15 @@ source  /software/projects/pawsey0001/sbeecroft/miniforge3/bin/activate base
 
 export NXF_SINGULARITY_CACHEDIR=$MYSCRATCH/nf_singularity_cache
 
+#Check if FCP is installed. If not, install it. This only needs to be done once. 
+if ! command -v fcp >/dev/null 2>&1; then
+    echo "fcp not found on PATH" >&2
+    module load rust/1.85.0
+    cargo install fcp
+    echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc
+    source ~/.bashrc
+fi 
+
 nextflow run main.nf \
     --input samplesheet.csv \
     --outdir outdir \
