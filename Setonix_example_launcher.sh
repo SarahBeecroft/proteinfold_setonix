@@ -37,5 +37,5 @@ nextflow run main.nf \
     -config conf/pawsey_setonix.conf \
     -config conf/amd_containers.conf \
     --mode boltz,colabfold,esmfold,alphafold2 \
-    -params-file params.yaml \
+    -params-file setonix_params.yaml \
     -resume
