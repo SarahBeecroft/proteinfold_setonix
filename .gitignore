@@ -11,3 +11,8 @@ null/
 outdir/
 slurm-*
 logs/
+uniprot_trembl.fasta
+downloader.config
+downloader.sh
+urls.txt
+.gitignore
