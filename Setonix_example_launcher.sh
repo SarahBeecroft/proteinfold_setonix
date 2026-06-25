@@ -9,20 +9,6 @@
 #SBATCH --partition=work
 
 
-############################################################################################################################################################
-## Check if FCP is installed. If not, install it. This only needs to be done once.
-## Once FCP is installed for you, you can delete this block.
-## FCP enables super-fast copy of key reference files to /tmp for colabfold_search. Reading those files from /tmp instead of /scratch provides a 10x speedup. 
-#if ! command -v fcp >/dev/null 2>&1; then
-#    echo "fcp not found on PATH" >&2
-#    module load rust/1.85.0
-#    cargo install fcp
-#    echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc
-#    source ~/.bashrc
-#fi 
-#############################################################################################################################################################
-
-
 # Load singularity module.
 module load singularity/3.11.4-nompi 
 
