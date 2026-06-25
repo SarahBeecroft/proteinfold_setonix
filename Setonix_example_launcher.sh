@@ -3,23 +3,24 @@
 #SBATCH --time=24:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=2
-#SBATCH --mem=8GB
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=4GB
 #SBATCH --account=pawsey0012
+#SBATCH --partition=work
 
 
 ############################################################################################################################################################
-# Check if FCP is installed. If not, install it. This only needs to be done once.
-# Once FCP is installed for you, you can delete this block.
-# FCP enables super-fast copy of key reference files to /tmp for colabfold_search. Reading those files from /tmp instead of /scratch provides a 10x speedup. 
-if ! command -v fcp >/dev/null 2>&1; then
-    echo "fcp not found on PATH" >&2
-    module load rust/1.85.0
-    cargo install fcp
-    echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc
-    source ~/.bashrc
-fi 
-############################################################################################################################################################
+## Check if FCP is installed. If not, install it. This only needs to be done once.
+## Once FCP is installed for you, you can delete this block.
+## FCP enables super-fast copy of key reference files to /tmp for colabfold_search. Reading those files from /tmp instead of /scratch provides a 10x speedup. 
+#if ! command -v fcp >/dev/null 2>&1; then
+#    echo "fcp not found on PATH" >&2
+#    module load rust/1.85.0
+#    cargo install fcp
+#    echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc
+#    source ~/.bashrc
+#fi 
+#############################################################################################################################################################
 
 
 # Load singularity module.
@@ -30,12 +31,14 @@ module load singularity/3.11.4-nompi
 conda_activate="${CONDA_EXE%conda}activate"
 source $conda_activate base
 
+export NXF_SINGULARITY_CACHEDIR=/scratch/pawsey0001/sbeecroft/nf_singularity_cache
+export SINGULARITY_CACHEDIR=/scratch/pawsey0001/sbeecroft/singularity_cache
+
 # Run the workflow
 nextflow run main.nf \
     --input samplesheet.csv \
     --outdir $MYSCRATCH/proteinfold/outdir \
-    -config conf/pawsey_setonix.conf \
-    -config conf/amd_containers.conf \
+    -config pawsey_setonix.config \
     --mode boltz,colabfold,esmfold,alphafold2 \
     -params-file setonix_params.yaml \
     -resume
