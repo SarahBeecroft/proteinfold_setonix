@@ -17,8 +17,8 @@ module load singularity/3.11.4-nompi
 conda_activate="${CONDA_EXE%conda}activate"
 source $conda_activate base
 
-export NXF_SINGULARITY_CACHEDIR=/scratch/pawsey0001/sbeecroft/nf_singularity_cache
-export SINGULARITY_CACHEDIR=/scratch/pawsey0001/sbeecroft/singularity_cache
+export NXF_SINGULARITY_CACHEDIR=${MYSCRATCH}/nf_singularity_cache
+export SINGULARITY_CACHEDIR=${MYSCRATCH}/singularity_cache
 
 # Run the workflow
 nextflow run main.nf \
